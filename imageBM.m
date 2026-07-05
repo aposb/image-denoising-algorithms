@@ -1,9 +1,12 @@
+% Image Denoising using Block Matching
+%
+
+% Parameters
 levels = 256;
 windowSize = 3;
 
-% Read noisy image
+% Read input image
 inputImg = imread('input.png');
-%inputImg = rgb2gray(inputImg);
 
 % Get image size
 [rows,cols] = size(inputImg);
@@ -11,21 +14,21 @@ inputImg = imread('input.png');
 % Convert from uint8 to double
 inputImg = double(inputImg);
 
-% Compute initial matching cost
+% Compute initial cost
 C0 = zeros(rows,cols,levels);
 for d = 0:levels-1
 	C0(:,:,d+1) = abs(inputImg-d);
 end
 
-% Compute aggregated matching cost
+% Compute aggregated cost
 C1 = imboxfilt3(C0,[windowSize windowSize 1]);
 
-% Create denoised image
-[~,ind] = min(C1,[],3);
-outputImg = uint8(ind-1);
+% Create output image
+[cost,index] = min(C1,[],3);
+outputImg = uint8(index-1);
 
-% Show denoised image
+% Show output image
 figure; imshow(outputImg)
 
-% Save denoised image
-imwrite(outputImg,'output.png')
+% Save output image
+imwrite(outputImg,'outputBM.png')
