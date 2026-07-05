@@ -1,16 +1,21 @@
-# Block Matching for Image Denoising
-An optimized Matlab implementation of Block Matching algorithm for image denoising. It uses the "SAD" (Sum of Absolute Differences) similarity metric.
+# Image Denoising Algorithms in MATLAB
 
-## Input Image
-The noisy image that used as input.
+Image Denoising Algorithms in MATLAB. It includes implementations of Block Matching, Belief Propagation and ICM (Iterated Conditional Modes).
 
-<p align="center">
-  <img src="input.png"> 
-</p>
+## Results
 
-## Output Image
-The denoised image that created at the output.
+### Noisy Image
 
-<p align="center">
-  <img src="output.png"> 
-</p>
+![Noisy Image](input.png)
+
+### Block Matching
+
+![Block Matching - Denoised Image](results/outputBM.png)
+
+### Belief Propagation
+
+![Belief Propagation - Denoised Image](results/outputBP.png)
+
+### ICM
+
+![Iterated Conditional Modes - Denoised Image](results/outputICM.png)
